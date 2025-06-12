@@ -2,12 +2,72 @@ package com.korniykom.birthdaycard.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.korniykom.birthdaycard.R
 
-// Set of Material typography styles to start with
+val Mali = FontFamily(
+    Font(
+        resId = R.font.mali_bold,
+        weight = FontWeight.Bold
+    ),
+    Font(
+        resId = R.font.mali_medium,
+        weight = FontWeight.Medium
+    )
+)
+
+val Nunito = FontFamily(
+    Font(
+        resId = R.font.nunito_normal,
+        weight = FontWeight.Normal
+    ),
+    Font(
+        resId = R.font.nunito_semibold,
+        weight = FontWeight.SemiBold
+    )
+)
+
 val Typography = Typography(
+    headlineLarge = TextStyle(
+        fontFamily = Mali,
+        fontWeight = FontWeight.Bold,
+        fontSize = 36.sp,
+        lineHeight = 42.sp,
+        color = OnSurface
+    ),
+    headlineMedium = TextStyle(
+        fontFamily = Mali,
+        fontWeight = FontWeight.Medium,
+        fontSize = 21.sp,
+        lineHeight = 25.sp,
+        color = OnSurface
+    ),
+    bodyLarge = TextStyle(
+        fontFamily = Nunito,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 21.sp,
+        lineHeight = 25.sp,
+        color = OnSurface
+    ),
+    bodyMedium = TextStyle(
+        fontFamily = Nunito,
+        fontWeight = FontWeight.Normal,
+        fontSize = 21.sp,
+        lineHeight = 25.sp,
+        color = OnSurface
+    ),
+
+
+
+
+
+
+
+
+
     bodyLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
