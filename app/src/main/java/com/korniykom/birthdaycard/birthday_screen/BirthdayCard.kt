@@ -1,11 +1,14 @@
 package com.korniykom.birthdaycard.birthday_screen
 
+import android.annotation.SuppressLint
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,11 +22,17 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.korniykom.birthdaycard.R
 import com.korniykom.birthdaycard.theme.BirthdayCardTheme
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 fun BirthdayCard(
     modifier: Modifier = Modifier
@@ -37,9 +46,12 @@ fun BirthdayCard(
         val textSpacer = if(isTablet) 56.dp else 32.dp
         val bottomSpacer = if(isTablet) 24.dp else 16.dp
         val titleFontSize = if(isTablet) 60.sp else 36.sp
+        val bottomFontSize = if(isTablet) 26.sp else 16.sp
         val bodyFontSize = if(isTablet) 34.sp else 21.sp
         val titleLineHeight = if(isTablet) 72.sp else 43.sp
         val bodyLineHeight = if(isTablet) 40.sp else 25.sp
+        val bottomLineHeight = if(isTablet) 32.sp else 20.sp
+
 
         Card(
             modifier = Modifier
@@ -54,6 +66,13 @@ fun BirthdayCard(
                 modifier = Modifier
                     .fillMaxSize()
             ) {
+                Image(
+                    painter = painterResource(id = R.drawable.sprinkles_bg),
+                    contentDescription = "Sprinkles background",
+                    contentScale = ContentScale.Fit,
+                    modifier = Modifier
+                        .fillMaxSize()
+                )
                 Column(
                     modifier = Modifier
                         .align(Alignment.Center)
@@ -77,29 +96,74 @@ fun BirthdayCard(
                             )
                     )
                     Spacer(modifier = Modifier.height(textSpacer))
+                    Row {
+                        Text(
+                            text = "Date: ",
+                            style = MaterialTheme.typography.bodyMedium
+                                .copy(
+                                    fontSize = bodyFontSize,
+                                    lineHeight = bodyLineHeight,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                        )
+                        Text(
+                            text = "June 14, 2025",
+                            style = MaterialTheme.typography.bodyMedium
+                                .copy(
+                                    fontSize = bodyFontSize,
+                                    lineHeight = bodyLineHeight,
+                                ),
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = .8f)
+                        )
+                    }
+                    Row {
+                        Text(
+                            text = "Time: ",
+                            style = MaterialTheme.typography.bodyMedium
+                                .copy(
+                                    fontSize = bodyFontSize,
+                                    lineHeight = bodyLineHeight,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                        )
+                        Text(
+                            text = "3:00 PM",
+                            style = MaterialTheme.typography.bodyMedium
+                                .copy(
+                                    fontSize = bodyFontSize,
+                                    lineHeight = bodyLineHeight
+                                ),
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = .8f)
+                        )
+                    }
+                    Row {
+                        Text(
+                            text = "Location: ",
+                            style = MaterialTheme.typography.bodyMedium
+                                .copy(
+                                    fontSize = bodyFontSize,
+                                    lineHeight = bodyLineHeight,
+                                    fontWeight = FontWeight.SemiBold
+                                ),
+                        )
+                        Text(
+                            text = "Party Central, 123",
+                            style = MaterialTheme.typography.bodyMedium
+                                .copy(
+                                    fontSize = bodyFontSize,
+                                    lineHeight = bodyLineHeight,
+                                ),
+                            color = MaterialTheme.colorScheme.onSurface.copy(alpha = .8f)
+                        )
+                    }
                     Text(
-                        text = "Date: June 14, 2025",
+                        text = "Celebration Lane",
                         style = MaterialTheme.typography.bodyMedium
                             .copy(
                                 fontSize = bodyFontSize,
-                                lineHeight = bodyLineHeight
-                            )
-                    )
-                    Text(
-                        text = "Time: 3:00 PM",
-                        style = MaterialTheme.typography.bodyMedium
-                            .copy(
-                                fontSize = bodyFontSize,
-                                lineHeight = bodyLineHeight
-                            )
-                    )
-                    Text(
-                        text = "Location: Party Central,\n 123 Celebration Lane",
-                        style = MaterialTheme.typography.bodyMedium
-                            .copy(
-                                fontSize = bodyFontSize,
-                                lineHeight = bodyLineHeight
-                            )
+                                lineHeight = bodyLineHeight,
+                            ),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .8f)
                     )
                 }
                 Column(
@@ -113,9 +177,10 @@ fun BirthdayCard(
                         text = "RSVP by June 9",
                         style = MaterialTheme.typography.bodyMedium
                             .copy(
-                                fontSize = bodyFontSize,
+                                fontSize = bottomFontSize,
                                 lineHeight = bodyLineHeight
-                            )
+                            ),
+                        color = MaterialTheme.colorScheme.onSurface.copy(alpha = .8f)
                     )
                     Spacer(modifier = Modifier.height(bottomSpacer))
                 }
